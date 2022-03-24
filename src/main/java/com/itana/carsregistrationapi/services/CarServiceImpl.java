@@ -18,7 +18,7 @@ public class CarServiceImpl implements CarService {
 
 
     @Override
-    public Car createCar(Long carId, Car car) {
+    public Car createCar( Car car) {
         return carRepository.save(car);
     }
 

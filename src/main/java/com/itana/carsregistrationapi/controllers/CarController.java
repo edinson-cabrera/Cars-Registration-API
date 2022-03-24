@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
@@ -38,8 +39,18 @@ public class CarController {
     }
 
     @PostMapping("/cars")
-    public CarResource createCar(@PathVariable(name = "carId") Long carId, @Valid @RequestBody SaveCarResource resource) {
-        return convertToResource(carService.createCar(carId, convertToEntity(resource)));
+    public CarResource createCar(@Valid @RequestBody SaveCarResource resource) {
+        return convertToResource(carService.createCar(convertToEntity(resource)));
+    }
+
+    @PutMapping("/cars/{carId}")
+    public CarResource updateCar(@PathVariable(name = "carId") Long carId, @Valid @RequestBody SaveCarResource resource){
+        return convertToResource(carService.updateCar(carId, convertToEntity(resource)));
+    }
+
+    @DeleteMapping("/cars/{carId}")
+    public ResponseEntity<?> deleteCar(@PathVariable(name="carId") Long carId){
+        return carService.deleteCar(carId);
     }
 
     private Car convertToEntity(SaveCarResource resource) { return mapper.map(resource, Car.class);}
