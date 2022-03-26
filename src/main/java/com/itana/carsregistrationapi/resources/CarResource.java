@@ -7,8 +7,8 @@ import lombok.Data;
 public class CarResource extends AuditModel {
     private Long id;
     private String month;
-    private String vehicleMake;
-    private String fuelType;
-    private String vehicleType;
-    private Integer NumberOfVehicles;
+    private String make;
+    private String fuel_type;
+    private String vehicle_type;
+    private Integer number;
 }
