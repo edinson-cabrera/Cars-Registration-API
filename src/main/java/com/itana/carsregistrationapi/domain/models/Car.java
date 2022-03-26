@@ -20,8 +20,9 @@ public class Car extends AuditModel {
 
     private String vehicle_type;
 
-    private Integer number;
+    private Integer number; 
 
+    public Car() {}
 
     public Car(String month, String vehicleMake, String fuelType, String vehicleType, Integer numberOfVehicles){
         this.month = month;
@@ -29,7 +30,5 @@ public class Car extends AuditModel {
         this.fuel_type = fuelType;
         this.vehicle_type = vehicleType;
         this.number = numberOfVehicles;
-    } public Car() {
-
     }
 }

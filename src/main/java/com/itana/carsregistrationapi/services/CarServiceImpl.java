@@ -59,7 +59,7 @@ public class CarServiceImpl implements CarService {
 
     public void importByCSV(MultipartFile file) {
         try {
-            List<Car> cars = CSVHelper.csvToTutorials(file.getInputStream());
+            List<Car> cars = CSVHelper.csvToCars(file.getInputStream());
             carRepository.saveAll(cars);
         } catch (IOException e) {
             throw new RuntimeException("fail to store csv data: " + e.getMessage());
