@@ -10,6 +10,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CarServiceImpl implements CarService {
 
@@ -23,8 +25,8 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public Page<Car> getAllCars(Pageable pageable) {
-        return carRepository.findAll(pageable);
+    public List<Car> getAllCars() {
+        return carRepository.findAll();
     }
 
     @Override

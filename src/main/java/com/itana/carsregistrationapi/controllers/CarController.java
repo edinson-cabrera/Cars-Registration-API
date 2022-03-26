@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +23,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api")
 @Transactional
+@CrossOrigin(origins = {"http://localhost:3000","https://transcendent-ganache-d34b66.netlify.app"})
 @Tag(name = "cars", description = "Cars API")
 public class CarController {
     @Autowired
@@ -31,11 +33,9 @@ public class CarController {
     private CarService carService;
 
     @GetMapping("/cars")
-    public Page<CarResource>getAllCars(@Parameter(description = "Pageable Parameter") Pageable pageable){
-        Page<Car> carPage = carService.getAllCars(pageable);
-        List<CarResource> resources = carPage.getContent().stream().map(this::convertToResource).collect(Collectors.toList());
-
-        return new PageImpl<CarResource>(resources, pageable, resources.size());
+    public ResponseEntity<List<Car>>getAllCars() {
+        List<Car> cars = carService.getAllCars();
+        return new ResponseEntity<List<Car>>(cars, HttpStatus.OK);
     }
 
     @PostMapping("/cars")

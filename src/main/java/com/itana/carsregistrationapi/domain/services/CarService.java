@@ -5,10 +5,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 
+import java.util.List;
+
 public interface CarService {
 
     Car createCar(Car car);
-    Page<Car>getAllCars(Pageable pageable);
+
+    List<Car>getAllCars();
     Car updateCar(Long carId, Car carRequest);
     ResponseEntity<?> deleteCar(Long carId);
 
