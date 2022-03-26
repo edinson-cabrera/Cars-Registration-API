@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api")
 @Transactional
-@CrossOrigin(origins = {"http://localhost:3000","https://transcendent-ganache-d34b66.netlify.app"})
+@CrossOrigin(origins = {"http://localhost:3000","https://symphonious-froyo-8742d3.netlify.app"})
 @Tag(name = "cars", description = "Cars API")
 public class CarController {
     @Autowired
